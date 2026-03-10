@@ -8,24 +8,25 @@ Este proyecto realiza un análisis básico de texto:
 - Conteo de ocurrencias de palabras
 - Identificación de palabras más frecuentes
 - Cálculo de vocabulario único y riqueza léxica
+- Longitud de palabras y longitud promedio
+
 
 Herramientas: Python estándar + collections.Counter
 Autor: Ayelén Apicella
 """
 
 from collections import Counter
+import re
 
 # ----------------------------
 # Funciones
 # ----------------------------
-
 def limpiar_texto(texto):
-    """Convierte a minúsculas y elimina signos de puntuación."""
-    resultado = texto.lower()
-    signos = "¿?¡!:,."
-    for s in signos:
-        resultado = resultado.replace(s, "")
-    return resultado
+    """ Quita signos del texto"""
+    texto = texto.lower()
+    texto = re.sub(r'[^\w\s]', "",texto)
+    return texto
+
     
 def lista_palabras(texto):
     """Divide el texto en palabras (tokens)."""
